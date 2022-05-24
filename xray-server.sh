@@ -13,6 +13,7 @@ if [ ! -f "uuid" ]; then
 fi
 
 # 生成链接信息
+touch url.txt
 # VLESS-TCP-XTLS
 echo "vless://$(uuid)@$(DOMAIN):$(PORT)?security=xtls&encryption=none&headerType=none&type=tcp&flow=xtls-rprx-direct#VLESS-TCP-XTLS_$(DOMAIN)" >>url.txt
 # VLESS-TCP-TLS
