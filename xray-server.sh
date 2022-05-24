@@ -25,4 +25,13 @@ echo "vmess://"$(echo '{"add":'"${DOMAIN}"',"aid":"0","host":'"${DOMAIN}"',"id":
 # Trojan-TCP-TLS
 echo "trojan://${uuid}@${DOMAIN}:${PORT}?security=tls&headerType=none&type=tcp#Trojan-TCP-TLS_${DOMAIN}" >>/srv/url.txt
 
+echo "链接信息："
+echo ""
+echo ""
+echo ""
+cat /srv/url.txt
+echo ""
+echo ""
+echo ""
+
 xray run -c /srv/xray-server.json
