@@ -1,6 +1,7 @@
 # onekey-docker-xray
 
-**一键部署你的Xray服务,一次6个配置，哪个舒服用哪个**
+### 一键部署你的Xray服务,一次6个配置，哪个舒服用哪个，将输出链接全部复制粘贴到v2rayNG、Trojan等APP中从剪切板添加节点即可
+
 1. VLESS over TCP with XTLS，数倍性能，首选方式
 2. VLESS over TCP with TLS
 3. VLESS over WS with TLS
