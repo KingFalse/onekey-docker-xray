@@ -60,11 +60,6 @@
             "password": "UUID_UUID",
             "level": 0
           }
-        ],
-        "fallbacks": [
-          {
-            "dest": 80
-          }
         ]
       },
       "streamSettings": {
