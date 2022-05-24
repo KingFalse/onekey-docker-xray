@@ -1,6 +1,6 @@
 FROM teddysun/xray
 
-LABEL maintainer="KingFalse@yzsl@live.com"
+LABEL maintainer="KingFalse <yzsl@live.com>"
 
 USER 0
 
