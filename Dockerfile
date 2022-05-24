@@ -9,6 +9,5 @@ ENV PORT=443
 WORKDIR /srv
 
 ADD ./xray-server.json /srv/
-ADD ./v2-server.sh /srv/
 
-CMD ["sh","/srv/v2-server.sh"]
+CMD ["sh","/srv/xray-server.sh"]
