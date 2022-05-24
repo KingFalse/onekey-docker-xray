@@ -13,18 +13,18 @@ if [ ! -f "uuid" ]; then
 fi
 
 # 生成链接信息
-touch url.txt
+touch /srv/url.txt
 # VLESS-TCP-XTLS
-echo "vless://$(uuid)@$(DOMAIN):$(PORT)?security=xtls&encryption=none&headerType=none&type=tcp&flow=xtls-rprx-direct#VLESS-TCP-XTLS_$(DOMAIN)" >>url.txt
+echo "vless://$(uuid)@$(DOMAIN):$(PORT)?security=xtls&encryption=none&headerType=none&type=tcp&flow=xtls-rprx-direct#VLESS-TCP-XTLS_$(DOMAIN)" >>/srv/url.txt
 # VLESS-TCP-TLS
-echo "vless://$(uuid)@$(DOMAIN):$(PORT)?security=tls&encryption=none&headerType=none&type=tcp#VLESS-TCP-TLS_$(DOMAIN)" >>url.txt
+echo "vless://$(uuid)@$(DOMAIN):$(PORT)?security=tls&encryption=none&headerType=none&type=tcp#VLESS-TCP-TLS_$(DOMAIN)" >>/srv/url.txt
 # VLESS-WS-TLS
-echo "vless://$(uuid)@$(DOMAIN):$(PORT)?path=%2Fwebsocket&security=tls&encryption=none&type=ws#VLESS-WS-TLS_$(DOMAIN)" >>url.txt
+echo "vless://$(uuid)@$(DOMAIN):$(PORT)?path=%2Fwebsocket&security=tls&encryption=none&type=ws#VLESS-WS-TLS_$(DOMAIN)" >>/srv/url.txt
 # VMESS-WS-TLS
-echo "vmess://"$(echo '{"add":'"$(DOMAIN)"',"aid":"0","host":"","id":"'$(uuid)'","net":"ws","path":"/vmessws","port":"'$(PORT)'","ps":"VMESS-WS-TLS_'$(DOMAIN)'","scy":"none","sni":"","tls":"tls","type":"","v":"2"}' | base64 -w 0) >>url.txt
+echo "vmess://"$(echo '{"add":'"$(DOMAIN)"',"aid":"0","host":"","id":"'$(uuid)'","net":"ws","path":"/vmessws","port":"'$(PORT)'","ps":"VMESS-WS-TLS_'$(DOMAIN)'","scy":"none","sni":"","tls":"tls","type":"","v":"2"}' | base64 -w 0) >>/srv/url.txt
 # VMESS-TCP-TLS
-echo "vmess://"$(echo '{"add":'"$(DOMAIN)"',"aid":"0","host":'"$(DOMAIN)"',"id":"'$(uuid)'","net":"tcp","path":"/vmesstcp","port":"'$(PORT)'","ps":"VMESS-TCP-TLS_'$(DOMAIN)'","scy":"none","sni":'"$(DOMAIN)"',"tls":"tls","type":"http","v":"2"}' | base64 -w 0) >>url.txt
+echo "vmess://"$(echo '{"add":'"$(DOMAIN)"',"aid":"0","host":'"$(DOMAIN)"',"id":"'$(uuid)'","net":"tcp","path":"/vmesstcp","port":"'$(PORT)'","ps":"VMESS-TCP-TLS_'$(DOMAIN)'","scy":"none","sni":'"$(DOMAIN)"',"tls":"tls","type":"http","v":"2"}' | base64 -w 0) >>/srv/url.txt
 # Trojan-TCP-TLS
-echo "trojan://$(uuid)@$(DOMAIN):$(PORT)?security=tls&headerType=none&type=tcp#Trojan-TCP-TLS_$(DOMAIN)" >>url.txt
+echo "trojan://$(uuid)@$(DOMAIN):$(PORT)?security=tls&headerType=none&type=tcp#Trojan-TCP-TLS_$(DOMAIN)" >>/srv/url.txt
 
 xray run -c /srv/xray-server.json
