@@ -8,8 +8,6 @@ if [ ! -f "uuid" ]; then
   sed -i '/certificates/r ssl.json' xray-server.json
   sed -i 's/$(PORT)/'$(PORT)'/' xray-server.json
   sed -i 's/UUID_UUID/'$(uuid)'/' xray-server.json
-  sed -i 's/DOMAIN/'$(DOMAIN)'/' v2-server.json
-  sed -i 's/your.domain.com/'$(DOMAIN)'/' v2-client.json
 fi
 
 # 生成链接信息
