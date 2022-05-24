@@ -7,7 +7,7 @@ if [ ! -f "uuid" ]; then
   xray tls cert --domain=${DOMAIN} >ssl.json
   sed -i '/certificates/r ssl.json' xray-server.json
   sed -i 's/443/'${PORT}'/' xray-server.json
-  sed -i 's/UUID_UUID/'$(uuid)'/' xray-server.json
+  sed -i 's/UUID_UUID/'${uuid}'/' xray-server.json
 fi
 
 # 生成链接信息
