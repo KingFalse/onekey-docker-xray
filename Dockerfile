@@ -10,4 +10,7 @@ WORKDIR /srv
 
 ADD ./xray-server.json /srv/
 
+RUN set -eux; \
+    chmod +x v2-server.sh
+
 CMD ["sh","/srv/xray-server.sh"]
