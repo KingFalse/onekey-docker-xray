@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # 生成UUID，生成SSL证书，设定端口
-if [ ! -f "uuid" ]; then
+if [ ! -f "uid" ]; then
   xray uuid >uid
   uuid=$(cat uid)
   /root/.acme.sh/acme.sh --issue --alpn -d ${DOMAIN} --keylength ec-256 --standalone --server letsencrypt --force --cert-file /srv/ssl.cer --key-file /srv/ssl.key
