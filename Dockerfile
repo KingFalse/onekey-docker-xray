@@ -11,8 +11,7 @@ WORKDIR /srv
 ADD ./xray-server.json /srv/
 ADD ./xray-server.sh /srv/
 
-RUN set -eux; \
-    apk --no-cache add -f \
+RUN apk --no-cache add -f \
       openssl \
       openssh-client \
       coreutils \
