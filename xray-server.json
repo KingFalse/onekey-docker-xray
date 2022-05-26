@@ -44,8 +44,11 @@
           "alpn": [
             "http/1.1"
           ],
-          "allowInsecure": true,
           "certificates": [
+            {
+              "certificateFile": "/srv/ssl.cer",
+              "keyFile": "/srv/ssl.key"
+            }
           ]
         }
       }
