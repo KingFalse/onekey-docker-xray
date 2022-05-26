@@ -37,6 +37,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Docker Setup QEMU
+        # You may pin to the exact commit or the version.
+        # uses: docker/setup-qemu-action@8b122486cedac8393e77aa9734c3528886e4a1a8
+        uses: docker/setup-qemu-action@v2.0.0
+        with:
+          # QEMU static binaries Docker image (e.g. tonistiigi/binfmt:latest)
+          image: # optional, default is tonistiigi/binfmt:latest
+          # Platforms to install (e.g. arm64,riscv64,arm)
+          platforms: # optional, default is all
+
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
       - name: Install cosign
