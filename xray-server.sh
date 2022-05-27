@@ -4,7 +4,7 @@
 if [ ! -f "uid" ]; then
   xray uuid >uid
   uuid=$(cat uid)
-  /root/.acme.sh/acme.sh --issue --alpn -d ${DOMAIN} --keylength ec-256 --standalone --server letsencrypt --force --cert-file /srv/ssl.cer --key-file /srv/ssl.key
+  /root/.acme.sh/acme.sh --issue --alpn -d ${DOMAIN} --keylength ec-256 --standalone --server letsencrypt --force --fullchain-file /srv/fullchain.cer --key-file /srv/ssl.key
   if [ ! -f "/srv/ssl.key" ]; then
     echo "申请SSL证书失败！"
     exit 1

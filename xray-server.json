@@ -46,7 +46,7 @@
           ],
           "certificates": [
             {
-              "certificateFile": "/srv/ssl.cer",
+              "certificateFile": "/srv/fullchain.cer",
               "keyFile": "/srv/ssl.key"
             }
           ]
