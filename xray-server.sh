@@ -13,9 +13,9 @@ if [ ! -f "uid" ]; then
   sed -i 's/UUID_UUID/'${uuid}'/' xray-server.json
 
   # 生成链接信息
-  sed -i 's/UUID/'${uuid}'/' xray-server.json
-  sed -i 's/PORT/'${PORT}'/' xray-server.json
-  sed -i 's/DOMAIN/'${DOMAIN}'/' xray-server.json
+  sed -i 's/UUID/'${uuid}'/' url.txt
+  sed -i 's/PORT/'${PORT}'/' url.txt
+  sed -i 's/DOMAIN/'${DOMAIN}'/' url.txt
   # VMESS-WS-TLS
   echo "vmess://"$(echo '{"add":'"${DOMAIN}"',"aid":"0","host":"","id":"'${uuid}'","net":"ws","path":"/vmessws","port":"'${PORT}'","ps":"VMESS-WS-TLS_'${DOMAIN}'","scy":"none","sni":"","tls":"tls","type":"","v":"2"}' | base64 -w 0) >>/srv/url.txt
   # VMESS-TCP-TLS
