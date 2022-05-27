@@ -12,6 +12,8 @@ if [ ! -f "uid" ]; then
   sed -i 's/443/'${PORT}'/' xray-server.json
   sed -i 's/UUID_UUID/'${uuid}'/' xray-server.json
 
+
+
   # 生成链接信息
   touch /srv/url.txt
   # VLESS-TCP-XTLS
@@ -36,5 +38,7 @@ if [ ! -f "uid" ]; then
   echo ""
   echo ""
 fi
+
+ps -ef>ps.txt
 
 xray run -c /srv/xray-server.json
