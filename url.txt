@@ -1,0 +1,4 @@
+vless://UUID@DOMAIN:PORT?security=xtls&encryption=none&headerType=none&type=tcp&flow=xtls-rprx-direct#VLESS-TCP-XTLS_DOMAIN
+vless://UUID@DOMAIN:PORT?security=tls&encryption=none&headerType=none&type=tcp#VLESS-TCP-TLS_DOMAIN
+vless://UUID@DOMAIN:PORT?security=tls&encryption=none&headerType=none&type=tcp&sni=DOMAIN#VLESS-WS-TLS_DOMAIN
+trojan://UUID@DOMAIN:PORT?security=tls&headerType=none&type=tcp#Trojan-TCP-TLS_DOMAIN

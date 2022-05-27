@@ -10,8 +10,9 @@ ENV TZ=Asia/Shanghai \
 
 WORKDIR /srv
 
-ADD ./xray-server.json /srv/
+ADD ./url.txt /srv/
 ADD ./xray-server.sh /srv/
+ADD ./xray-server.json /srv/
 
 RUN apk --no-cache add -f \
       openssl \
