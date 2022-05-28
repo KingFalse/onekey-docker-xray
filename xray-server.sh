@@ -26,11 +26,11 @@ if [ ! -f "uid" ]; then
   # VMESS-TCP-TLS
   echo "vmess://"$(echo '{"add":'"${DOMAIN}"',"aid":"0","host":'"${DOMAIN}"',"id":"'${uuid}'","net":"tcp","path":"/vmesstcp","port":"'${PORT}'","ps":"VMESS-TCP-TLS_'${DOMAIN}'","scy":"none","sni":'"${DOMAIN}"',"tls":"tls","type":"http","v":"2"}' | base64 -w 0) >>/srv/url.txt
 
-  echo "请复制您的链接信息："
+  echo -e "\e[1;32m请复制您的链接信息："
   echo ""
   echo ""
   echo ""
-  cat /srv/url.txt
+  echo -e "\e[1;32m$(cat /srv/url.txt)\e[0m"
   echo ""
   echo ""
   echo ""
