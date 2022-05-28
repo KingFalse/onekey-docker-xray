@@ -13,7 +13,7 @@
 
 * 确保你的域名已经解析到该服务器!!!
 
-* 安装：`curl -sSL https://raw.githubusercontent.com/KingFalse/onekey-docker-xray/main/install.sh | bash -s 你的域名 你的邮箱`
+* 安装：`curl -sSL https://onekey-docker-xray.kingfalse.io/install.sh | bash -s 你的域名 你的邮箱`
 
 * 手动docker安装：`docker run --name xray -d --restart=always --pull=always -p 443:443 -e DOMAIN=你的域名 -e EMAIL=你的邮箱 kingfalse/onekey-docker-xray`
 
@@ -35,4 +35,5 @@ docker rm -f xray
 
 ### 其他
 
-有问题提Issues,有需求也可
+* 邮箱是用来配合acme.sh自动申请证书用的
+* 有问题提Issues,有需求也可
