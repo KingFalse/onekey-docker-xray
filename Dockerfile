@@ -19,7 +19,6 @@ RUN apk --no-cache add -f \
       openssh-client \
       coreutils \
       bind-tools \
-      curl \
       sed \
       socat \
       tzdata \

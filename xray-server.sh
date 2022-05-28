@@ -2,7 +2,7 @@
 
 # 证书不存在则生成新证书
 if [ ! -f "/srv/ssl.key" ]; then
-  /root/.acme.sh/acme.sh --issue --alpn --tlsport 80 --days 1 -d ${DOMAIN} --keylength ec-256 --standalone --server letsencrypt --force --fullchain-file /srv/fullchain.cer --key-file /srv/ssl.key
+  /root/.acme.sh/acme.sh --issue --alpn --tlsport 80 --days 1 -d ${DOMAIN} --use-wget --keylength ec-256 --standalone --server letsencrypt --force --fullchain-file /srv/fullchain.cer --key-file /srv/ssl.key
 fi
 if [ ! -f "/srv/ssl.key" ]; then
   echo "申请SSL证书失败！"
