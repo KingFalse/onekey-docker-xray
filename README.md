@@ -11,13 +11,11 @@
 
 ### 快速安装
 
-* 默认443端口：`curl -sSL https://raw.githubusercontent.com/KingFalse/onekey-docker-xray/main/install.sh | bash`
+* 确保你的域名已经解析到该服务器!!!
 
-* 因为是自签证书,必须在客户端中将`跳过证书验证(allowInsecure)`选项设置为true
+* 安装：`curl -sSL https://raw.githubusercontent.com/KingFalse/onekey-docker-xray/main/install.sh | bash -s 你的域名 你的邮箱`
 
-* 指定其他端口：`curl -sSL https://raw.githubusercontent.com/KingFalse/onekey-docker-xray/main/install.sh | bash -s 6379`
-
-* 手动docker安装：`docker run --name xray -d --restart=always --pull=always -p 443:443 -e PORT=443 -e DOMAIN=服务器公网IP kingfalse/onekey-docker-xray`
+* 手动docker安装：`docker run --name xray -d --restart=always --pull=always -p 443:443 -e DOMAIN=你的域名 -e EMAIL=你的邮箱 kingfalse/onekey-docker-xray`
 
 ### 查看链接
 
