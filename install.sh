@@ -18,7 +18,8 @@ install_xray() {
   echo "正在启动docker容器..."
   docker run --name xray -d --pull=always -p 443:443 -e PORT=443 -e DOMAIN=${DOMAIN} -e EMAIL=${EMAIL} kingfalse/onekey-docker-xray
   #  --restart=always
-  docker container diff xray | grep "/srv/ssl.key"
+  docker logs -f xray
+  docker container diff xray | grep "/srv/ssl.key" >>/dev/null
   if [ $? -ne 0 ]; then
     echo "似乎是申请证书出问题了，请你检查输出日志..."
     docker rm -f xray >/dev/null 2>&1
