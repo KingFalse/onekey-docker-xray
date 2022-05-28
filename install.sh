@@ -24,6 +24,8 @@ install_xray() {
     echo "似乎是申请证书出问题了，请你检查输出日志..."
     docker rm -f xray >/dev/null 2>&1
     exit 0
+  else
+    echo "xxxxxxxxxxxxxxxxxx"
   fi
 
   echo "请复制您的链接信息："
