@@ -2,6 +2,7 @@
 set -e
 
 DOMAIN=$1
+EMAIL=$2
 
 command_exists() {
   command -v "$@" >/dev/null 2>&1
@@ -15,7 +16,7 @@ install_xray() {
   echo "您输入的域名是："${DOMAIN}
 
   echo "正在启动docker容器..."
-  docker run --name xray -d --restart=always --pull=always -p 443:443 -e DOMAIN=${DOMAIN} kingfalse/onekey-docker-xray
+  docker run --name xray -d --restart=always --pull=always -p 443:443 -e DOMAIN=${DOMAIN} -e EMAIL=${EMAIL} kingfalse/onekey-docker-xray
   echo "请复制您的链接信息："
   echo ""
   echo ""
