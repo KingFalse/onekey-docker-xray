@@ -20,8 +20,8 @@ install_xray() {
   docker logs -f xray
   if [[ "$(docker container diff xray)" == *"ssl.key"* ]]; then
     echo "证书初始化申请成功！"
-    docker container update xray --restart=always
-    docker restart xray
+    docker container update xray --restart=always >/dev/null 2>&1
+    docker restart xray >/dev/null 2>&1
   else
     echo "似乎是申请证书出问题了，请你检查输出日志..."
     exit 0
