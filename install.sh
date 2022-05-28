@@ -10,7 +10,6 @@ command_exists() {
 
 install_xray() {
   echo -e "\e[1;32m正在清理旧容器以及镜像...\e[0m"
-  echo -e "\e[1;32m：${DOMAIN}\e[0m"
   if [ "$(docker ps -aq -f name=xray)" ]; then
     docker rm -f xray >/dev/null 2>&1
   fi
