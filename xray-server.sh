@@ -1,10 +1,7 @@
 #!/bin/sh
 
-INIT_SSL=1
-
 # 证书不存在则生成新证书
 if [ ! -f "/srv/ssl.key" ]; then
-  INIT_SSL=0
   /root/.acme.sh/acme.sh --issue --alpn --tlsport 443 --days 1 -d ${DOMAIN} --keylength ec-256 --standalone --server letsencrypt -m ${EMAIL} --force --fullchain-file /srv/fullchain.cer --key-file /srv/ssl.key
   sed -i 's/443/80/' /root/.acme.sh/${DOMAIN}*/*.conf
 fi
@@ -29,7 +26,7 @@ if [ ! -f "uid" ]; then
   # VMESS-TCP-TLS
   echo "vmess://"$(echo '{"add":'"${DOMAIN}"',"aid":"0","host":'"${DOMAIN}"',"id":"'${uuid}'","net":"tcp","path":"/vmesstcp","port":"'${PORT}'","ps":"VMESS-TCP-TLS_'${DOMAIN}'","scy":"none","sni":'"${DOMAIN}"',"tls":"tls","type":"http","v":"2"}' | base64 -w 0) >>/srv/url.txt
 
-  echo "链接信息："
+  echo "请复制您的链接信息："
   echo ""
   echo ""
   echo ""
@@ -37,13 +34,6 @@ if [ ! -f "uid" ]; then
   echo ""
   echo ""
   echo ""
-fi
-
-if [ $INIT_SSL -eq 0 ]; then
-  if [ -f "/srv/ssl.key" ]; then
-    echo "首次初始化证书申请完成..."
-    exit
-  fi
 fi
 
 xray run -c /srv/xray-server.json

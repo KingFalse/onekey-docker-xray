@@ -18,11 +18,7 @@ install_xray() {
   echo "正在启动docker容器..."
   docker run --name xray -d --pull=always -p 443:443 -e PORT=443 -e DOMAIN=${DOMAIN} -e EMAIL=${EMAIL} kingfalse/onekey-docker-xray
   docker logs -f xray
-  echo "-----------------"
-
-  info=$(docker container diff xray)
-
-  if [[ "$info" == *"ssl.key"* ]]; then
+  if [[ "$(docker container diff xray)" == *"ssl.key"* ]]; then
     echo "证书初始化申请成功！"
     docker container update xray --restart=always
     docker restart xray
@@ -31,12 +27,6 @@ install_xray() {
     exit 0
   fi
 
-  echo "请复制您的链接信息："
-  echo ""
-  echo ""
-  docker exec xray cat /srv/url.txt
-  echo ""
-  echo ""
   echo "完全卸载：docker rm -f xray"
   echo "查看链接：docker exec xray cat /srv/url.txt"
   echo "喜欢请给个星：https://github.com/KingFalse/onekey-docker-xray"
