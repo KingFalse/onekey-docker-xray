@@ -1,10 +1,7 @@
 #!/bin/bash
 set -e
 
-PORT=$1
-if [[ -z "$1" ]]; then
-  PORT=443
-fi
+DOMAIN=$1
 
 command_exists() {
   command -v "$@" >/dev/null 2>&1
@@ -15,22 +12,15 @@ install_xray() {
   if [ "$(docker ps -aq -f name=xray)" ]; then
     docker rm -f xray >/dev/null 2>&1
   fi
-  echo "您指定的端口是：${PORT}"
-  echo "正在获取本机IP地址..."
-  ipv4=$(curl -sSL http://httpbin.org/ip | grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}")
-  echo "获取到当前机器IP地址："${ipv4}
-  DOMAIN=${ipv4}
+  echo "您输入的域名是："${DOMAIN}
+
   echo "正在启动docker容器..."
-  docker run --name xray -d --restart=always --pull=always -p ${PORT}:${PORT} -e PORT=${PORT} -e DOMAIN=${DOMAIN} kingfalse/onekey-docker-xray
+  docker run --name xray -d --restart=always --pull=always -p 443:443 -e DOMAIN=${DOMAIN} kingfalse/onekey-docker-xray
+  echo "请复制您的链接信息："
   echo ""
   echo ""
   docker exec xray cat /srv/url.txt
   echo ""
-  echo ""
-  echo "注意！！！"
-  echo "因为是自签证书,必须在客户端中将跳过证书验证(allowInsecure)选项设置为true"
-  echo "因为是自签证书,必须在客户端中将跳过证书验证(allowInsecure)选项设置为true"
-  echo "因为是自签证书,必须在客户端中将跳过证书验证(allowInsecure)选项设置为true"
   echo ""
   echo "完全卸载：docker rm -f xray"
   echo "查看链接：docker exec xray cat /srv/url.txt"
