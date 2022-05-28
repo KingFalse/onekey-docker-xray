@@ -41,7 +41,6 @@ fi
 
 if [ $INIT_SSL -eq 0 ]; then
   if [ -f "/srv/ssl.key" ]; then
-    echo "首次初始化证书申请完成..."
     exit
   fi
 fi
