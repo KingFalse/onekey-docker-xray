@@ -20,11 +20,11 @@ install_xray() {
   #  --restart=always
   docker logs -f xray
   echo "-----------------"
+
   docker container diff xray >install.log
-  grep "/srv/ssl.key" install.log >>/dev/null
+  grep "/srv/ssl.key" install.log
   if [ $? -ne 0 ]; then
     echo "似乎是申请证书出问题了，请你检查输出日志..."
-    docker rm -f xray >/dev/null 2>&1
     exit 0
   else
     echo "xxxxxxxxxxxxxxxxxx"
