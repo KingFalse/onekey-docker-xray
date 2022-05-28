@@ -25,6 +25,8 @@ install_xray() {
 
   if [[ "$info" == *"ssl.key"* ]]; then
     echo "It's there."
+  else
+    echo "xxxxxxxxxxxxxxxxxx"
   fi
 
 #  if ! grep -q "/srv/ssl.key" install.log; then
