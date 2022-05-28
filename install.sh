@@ -21,14 +21,18 @@ install_xray() {
   docker logs -f xray
   echo "-----------------"
 
-  docker container diff xray >install.log
-  cat install.log
-  if ! grep -q "/srv/ssl.key" install.log; then
-    echo "似乎是申请证书出问题了，请你检查输出日志..."
-    exit 0
-  else
-    echo "xxxxxxxxxxxxxxxxxx"
+  info=$(docker container diff xray)
+
+  if [[ "$info" == *"ssl.key"* ]]; then
+    echo "It's there."
   fi
+
+#  if ! grep -q "/srv/ssl.key" install.log; then
+#    echo "似乎是申请证书出问题了，请你检查输出日志..."
+#    exit 0
+#  else
+#    echo "xxxxxxxxxxxxxxxxxx"
+#  fi
 
   echo "请复制您的链接信息："
   echo ""
