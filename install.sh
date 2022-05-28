@@ -19,6 +19,7 @@ install_xray() {
   docker run --name xray -d --restart=always --pull=always -p 443:443 -e PORT=443 -e DOMAIN=${DOMAIN} -e EMAIL=${EMAIL} kingfalse/onekey-docker-xray
   docker logs -f xray
   docker logs -n 50 xray | grep "首次初始化证书申请完成" >>/dev/null
+  echo $?
   if [ $? -ne 0 ]; then
     echo "似乎是申请证书出问题了，请你检查输出日志..."
     docker rm -f xray >/dev/null 2>&1
