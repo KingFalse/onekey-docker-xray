@@ -26,6 +26,7 @@ RUN apk --no-cache add -f \
       oath-toolkit-oathtool \
       tar \
       libidn \
+      busybox-extras \
       jq; \
     wget -O -  https://get.acme.sh | sh; \
     chmod +x /srv/xray-server.sh
