@@ -50,5 +50,5 @@ if [ $INIT_SSL -eq 0 ]; then
   fi
 fi
 
-httpd -p 127.0.0.1:8080 -h /srv/webroot
+httpd -p 127.0.0.1:80 -h /srv/webroot
 xray run -c /srv/xray-server.json
