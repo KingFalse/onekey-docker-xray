@@ -9,11 +9,11 @@ on:
   schedule:
     - cron: '40 6 * * *'
   push:
-    branches: [ main ]
+    branches: [ dogdi ]
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
   pull_request:
-    branches: [ main ]
+    branches: [ dogdi ]
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -87,7 +87,7 @@ jobs:
           context: .
           platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/ppc64le,linux/s390x
           push: true
-          tags: kingfalse/onekey-docker-xray:latest
+          tags: kingfalse/onekey-docker-xray:dogdi
           labels: ${{ steps.meta.outputs.labels }}
 
       # Sign the resulting Docker image digest except on PRs.
