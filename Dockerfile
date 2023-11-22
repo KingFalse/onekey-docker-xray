@@ -4,31 +4,14 @@ LABEL maintainer="KingFalse <yzsl@live.com>"
 
 USER 0
 
-ENV TZ=Asia/Shanghai \
-    DOMAIN=your.domain.com \
-    PORT=443
+ENV PASSWORD=PASSWORD \
+    PORT=11443
 
 WORKDIR /srv
 
-ADD ./url.txt /srv/
 ADD ./xray-server.sh /srv/
-ADD ./xray-server.json /srv/
+ADD ./config.json /srv/
 
-RUN apk --no-cache add -f \
-      openssl \
-      openssh-client \
-      coreutils \
-      bind-tools \
-      curl \
-      sed \
-      socat \
-      tzdata \
-      oath-toolkit-oathtool \
-      tar \
-      libidn \
-      busybox-extras \
-      jq; \
-    wget -O -  https://get.acme.sh | sh; \
-    chmod +x /srv/xray-server.sh
+RUN chmod +x /srv/xray-server.sh
 
 CMD ["sh","/srv/xray-server.sh"]
